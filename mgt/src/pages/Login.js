@@ -7,7 +7,6 @@ import { login } from "../actions/auth";
 const Login = (props) => {
 
 	const form = useRef();
-	const checkBtn = useRef();
 
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
