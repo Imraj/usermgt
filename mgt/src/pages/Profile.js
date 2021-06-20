@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
+import { updatePassword } from "../actions/index";
+
 const Profile = () => {
 
 	const { user: currentUser } = useSelector((state) => state.auth);
@@ -17,7 +19,7 @@ const Profile = () => {
 	
 		setLoading(true);
 		
-		dispatch(updatePwd(password))
+		dispatch(updatePassword(password))
 		.then(() => {
 			props.history.push("/profile");
 			window.location.reload();
