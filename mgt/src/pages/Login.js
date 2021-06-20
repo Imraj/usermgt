@@ -59,11 +59,11 @@ const Login = (props) => {
 							</div>
 
 							<div class="form-group">
-								<input type="username" name="username" value={username} onChange={onChangeUsername} id="username" class="form-control input-lg" placeholder="Username" ng-model="main.loginData.email" tabindex="1"/>
+								<input type="username" name="username" value={this.state.username} onChange={onChangeUsername} id="username" class="form-control input-lg" placeholder="Username" ng-model="main.loginData.email" tabindex="1"/>
 							</div>
 
 							<div class="form-group">
-								<input type="password" class="form-control input-lg" value={password} onChange={onChangePassword} id="exampleInputPassword1" placeholder="Password" ng-model="main.loginData.password" tabindex="2"/>
+								<input type="password" class="form-control input-lg" value={this.state.password} onChange={onChangePassword} id="exampleInputPassword1" placeholder="Password" ng-model="main.loginData.password" tabindex="2"/>
 							</div>
 							
 						</form>
