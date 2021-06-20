@@ -1,8 +1,7 @@
-import {React} from 'react'
+import React, { useState, useRef } from "react";
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import { updatePassword } from "../actions/index";
 
 const Profile = () => {
