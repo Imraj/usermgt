@@ -1,0 +1,36 @@
+<section class="col-md-offset-1" style="margin-right:5em;">
+
+	<div>
+		<span us-spinner spinner-on="showSpinner"></span>
+
+		<div class="row show-hide-message col-md-6" ng-show="providers.successMsg">
+			<div class="alert alert-success"> {{ providers.successMsg }}</div>
+		</div>
+		<div class="row show-hide-message col-md-6" ng-show="providers.errorMsg">
+			<div class="alert alert-danger">{{ providers.errorMsg }}</div>
+		</div>
+
+		<table class="table">
+			<tr><th><h3>Providers</h3></th></tr>
+
+			<tr ng-repeat="prov in providers.providers">
+				<td>
+					<img src="assets/providers/{{prov.name}}.jpeg" width="100" height="100" class="img-responsive"/>
+
+				</td>
+				<td> <strong><a href="/provider/{{prov.name}}">{{ prov.name}}</a></strong> </td>
+				
+				<td> 
+					<div class="btn-group">
+						
+						<button type="button" ng-show="providers.fp.indexOf(prov._id) == -1" ng-click="providers.followProvider(prov._id)" class="btn btn-primary">FOLLOW</button>
+
+						<button type="button" ng-disabled=true ng-show="providers.fp.indexOf(prov._id) != -1" ng-click="providers.followProvider(prov._id)" class="btn btn-primary">FOLLOWING</button>
+					</div>
+				</td>
+				
+			</tr>
+		</table>
+
+	</div>
+</section>

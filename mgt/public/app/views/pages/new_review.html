@@ -1,0 +1,62 @@
+<section>
+			<div class="">
+				<div class="row">
+                    <span us-spinner spinner-on="showSpinner"></span>
+					<div class="col-md-9 col-md-offset-1" style="margin-top:3em;">
+                        <div>
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        Writing review for
+                        </div>
+
+						<h1>{{ review.courseInfo.title }}</h1>
+                        <span>{{ review.courseInfo.university }}</span> | <span>{{review.courseInfo._provider.name}}</span>
+						<hr class="colorgraph">
+					    <div class="well">
+                            Your review helps other learners like you discover great courses. Only review
+                            the course if you have taken or started taking this course.
+                        </div><br/><br/>
+
+                        <div class="alert alert-success" ng-show="review.reviewSuccessMsg">
+                                {{review.reviewSuccessMsg}}
+                        </div>
+                        <div class="alert alert-danger " ng-show="review.reviewErrorMsg">
+                                {{review.reviewErrorMsg}}
+                        </div>
+
+						<form ng-submit="review.submitReview(review.reviewData)" method="post" role="form" class="contactForm">
+                            <div class="form-group">
+                                <label>1.How would you rate this course ?</label>
+                                <div>
+                                   <angular-star-rating max="maxValue" value='ratingValue' 
+                                    hover='changeOnHover' is-readonly='isReadonly'>
+                                        
+                                    </angular-star-rating>
+                                </div>
+                            </div><br/><br/>
+                            <div class="form-group">
+                                <label>2. How much of the course did you finish?</label><br/>
+                                <select ng-model="review.reviewData.level" class="form-control">
+                                    <option>Taking right now</option>
+                                    <option>Partially Completed</option>
+                                    <option>Completed</option>
+                                    <option>Audited</option>
+                                    <option>Dropped</option>
+                                </select>
+                                
+                            </div><br/><br/>
+							<div class="form-group">
+                                <label>3.Your review(Must be at least 20 words)</label>
+								<textarea class="form-control" name="message" rows="10" data-rule="required" ng-model="review.reviewData.message"></textarea>
+								<div class="validation"></div>
+							</div>
+                            <hr class="colorgraph">
+                            
+                            <div>
+							    <input type="submit" class="btn btn-theme btn-block btn-lg" value="Submit" />
+                            </div>
+						</form>
+					
+					</div>
+				</div>
+			</div>
+    </section>

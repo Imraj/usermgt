@@ -1,0 +1,24 @@
+<section class="col-md-offset-1" style="margin-right:5em;">
+
+	<div>
+		<span us-spinner spinner-on="showSpinner"></span>
+		<table class="table">
+			<tr><th><h3>Universities</h3></th></tr>
+
+			<tr dir-paginate="uni in university.universities | itemsPerPage: 30">
+				
+				<td> <strong><a href="/institution/{{uni}}">{{ uni}}</a></strong> </td>
+				
+				<td> 
+					<div class="btn-group">
+						
+						<button type="button" class="btn btn-primary">FOLLOW</button>
+					</div>
+				</td>
+				
+			</tr>
+		</table>
+		<dir-pagination-controls boundary-links="true" direction-links="true" >
+		</dir-pagination-controls>
+	</div>
+</section>

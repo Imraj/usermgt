@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<base href="/">
+	<meta charset="utf-8">
+	<title>MoocExplorer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<!-- css -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/plugins/flexslider/flexslider.css" rel="stylesheet" media="screen" />
+	<link href="assets/css/cubeportfolio.min.css" rel="stylesheet" />
+	<link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/skins/default.css" rel="stylesheet" />
+	<link href="assets/css/animate.css" rel="stylesheet" />
+	<link href="assets/css/mean-style.css" rel="stylesheet" />
+	<link href="assets/plugins/angular-jk-rating-stars/dist/jk-rating-stars.css" />
+	
+	<link href="assets/css/bootstrap-social.css" rel="stylesheet" />
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+	<script src="assets/js/angular.js"></script>
+	<script src="assets/js/angular-flexslider.js"></script>
+	<script src="assets/js/angular-route.js"></script>
+	<script src="assets/js/angular-animate.js"></script>
+	<script src="assets/js/angular-resource.js"></script>
+	<script src="assets/plugins/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
+
+	<script src="assets/js/dirPagination.js"></script>
+
+
+	<script src="app/app.js"></script>
+	<script src="app/route.js"></script>
+	<script src="app/controllers/mainCtrl.js"></script>
+	<script src="app/controllers/homeCtrl.js"></script>
+	<script src="app/controllers/userCtrl.js"></script>
+	<script src="app/controllers/adminCtrl.js"></script>
+	<script src="app/controllers/providersCtrl.js"></script>
+	<script src="app/controllers/providerCtrl.js"></script>
+	<script src="app/controllers/profileCtrl.js"></script>
+
+	<script src="app/controllers/courseCtrl.js"></script>
+	<script src="app/controllers/reviewCtrl.js"></script>
+	<script src="app/controllers/writeReviewCtrl.js"></script>
+
+	<script src="app/controllers/coursesCtrl.js"></script>
+	<script src="app/controllers/universityCtrl.js"></script>
+	<script src="app/controllers/contactCtrl.js"></script>
+	<script src="app/controllers/subjectsCtrl.js"></script>
+
+	<script src="app/services/userServices.js"></script>
+	<script src="app/services/authServices.js"></script>
+	<script src="app/services/adminServices.js"></script>
+
+
+	<link rel="stylesheet" href="assets/star/main.min.css">
+	<script type="text/javascript" src="assets/star/main.min.js"></script>
+
+	<script src="assets/busy/angular-spinner.min.js"></script>
+
+</head>
+
+<body>
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="/">MoocExplorer</a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+			      <form class="navbar-form navbar-left" ng-submit="main.searchClicked(main.search)" role="search" id="navBarSearchForm">
+								<div class="form-group multiple-form-group input-group">
+									<input type="text" ng-model="main.search"  placeholder="What do you want to learn ? e.g Javascript, Robotics" class="form-control">
+									<span class="input-group-btn">
+								        <input type="submit"  class="btn btn-theme btn-add" value="Search"/>
+								    </span>
+
+								</div>
+					</form>
+			      <ul class="nav navbar-nav navbar-right">
+			      	<li class="dropdown active">
+						<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Courses <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="/providers">Providers</a></li>
+							<li><a href="/subjects">Subjects</a></li>
+							<li><a href="/institutions"> Institutions</a></li>
+
+						</ul>
+					</li>
+			        <li><a href="/write-a-review">New Review</a></li>
+					<li ng-show="!main.isLoggedIn"><a href="/login">Sign in</a></li>
+					<li ng-show="!main.isLoggedIn"><a href="/register"> Register</a></li>
+					<li ng-show="main.isLoggedIn"><a href="/profile/{{main.id}}">{{ main.fullname }}</a></li>
+					<li ng-show="main.role == 'admin' "><a href="/admin">Admin</a></li>
+					<li ng-show="main.isLoggedIn"><a href="#" ng-click="main.logout()"> logout</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+					<!--</header>-->
+
+		<!-- end header -->
+		<div ng-view>
+		</div>
+
+		<footer>
+			<!-- Footer Starts here -->
+			<div id="sub-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="copyright">
+								<p>&copy; MoocExplorer</p>
+								<div class="credits">
+
+									<a href="/">
+											Privacy policy
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<ul class="social-network">
+								<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+								<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="assets/js/modernizr.custom.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<script src="assets/plugins/flexslider/flexslider.config.js"></script>
+
+	<script src="assets/js/jquery.appear.js"></script>
+	<script src="assets/js/stellar.js"></script>
+	<script src="assets/js/classie.js"></script>
+	<script src="assets/js/jquery.cubeportfolio.min.js"></script>
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+	<script src="assets/js/animate.js"></script>
+	<script src="assets/js/custom.js"></script>
+
+
+</body>
+
+</html>

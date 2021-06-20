@@ -1,0 +1,170 @@
+<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9">
+						<article>
+							<div class="post-image">
+								<img src="img/dummies/blog/img1.jpg" alt="" class="img-responsive" />
+							</div>
+							<div>
+								<span us-spinner spinner-on="showSpinner"></span>
+
+								<h2>
+									{{course.courseInfo._provider.name}} : {{course.courseInfo.title}}
+								</h2>
+								<span>
+									<span>
+										<angular-star-rating max="maxValue" value='course.courseInfo.rating' class="form-group" hover='changeOnHover' is-readonly='isReadonly'>
+                                        </angular-star-rating>
+									</span>
+
+									<div>
+										<span>Offered by : </span><strong>{{course.courseInfo.university}}</strong> 
+									</div>
+									<div>
+										<span>Tutors : </span><span ng-repeat="cct in course.courseInfo.tutors">{{cct}}</span>
+									</div>
+
+								</span>
+							</div>
+							<br/><br/>
+							<div>
+								<p>
+									{{course.courseInfo.description}}
+								</p>
+								<blockquote>
+									{{course.courseInfo.expectation}}
+								</blockquote>
+								<p>
+									{{course.courseInfo.syllabus}}
+								</p>
+								
+							</div>
+							<div>
+							
+						</div>
+						<br/><br/>
+						<a href="/course/review/new/{{course.courseInfo._id}}" class="btn btn-default btn-lg">Write review</a>
+						</article>
+						
+						<div class="comment-area" id="read_reviews">
+							
+							<h2>Reviews<small> for {{course.courseInfo._provider.name}}'s {{course.courseInfo.title}}</small></h2>
+							<hr class="colorgraph" />
+							<div class="media">
+				
+								<div class="media-body" ng-repeat="rev in course.reviews">
+									<div class="media-content">
+										<h6><span>{{ rev.posted_on }}</span></h6>
+										<h6>{{ rev._user.fullname }}</h6>
+										<p>
+											{{ rev.text }}
+										</p>
+
+									</div>
+								</div>
+							</div>
+							
+							
+
+						</div>
+
+						<div class="clear"></div>
+					</div>
+					<div class="col-lg-3">
+						<aside class="right-sidebar">
+							<div class="widget">
+								
+								<ul class="cat">
+									<li>
+										<h3>{{ course.reviews.length}} Student Reviews</h3>
+									</li>
+									<li>
+										<div class="btn-group" role="group" aria-label="...">
+											<a href="#read_reviews" class="btn btn-default">Read reviews</a>
+											
+										</div>
+									</li>
+									<li><i class="fa fa-calendar"></i><a href="#"> Free Online Course</a></li>
+									<li><i class="fa fa-user"></i><a href="#"> Self Paced </a></li>
+									<li><i class="fa fa-comments"></i><a href="#"> Computer Science </a></li>
+									<li><i class="fa fa-tags"></i><a href="#">{{course.courseInfo.university}}</a></li>
+									<li><i class="fa fa-tags"></i><a href="#">{{course.courseInfo._provider.name}}</a></li>
+									<li><i class="fa fa-comment"></i><a href="#">{{ course.courseInfo.language }}</a></li>
+									<li><i class="fa fa-asterisk"></i><a href="#">$49 Certificate Available</a></li>
+									<li><i class="fa fa-tags"></i><a href="#">{{course.courseInfo.weekly_time}}</a></li>
+									<li><i class="fa fa-calendar"></i><a href="#">Self paced</a></li>
+									<li><i class="fa fa-tags"></i><a href="#">{{course.courseInfo.duration}} {{course.courseInfo.duration_unit}} long</a></li>
+								</ul>
+								<br/>
+								
+								<div>
+
+								</div>
+
+								<div>
+									<strong>Disclosure</strong>
+									To support our site, Class Central may be compensated by some course providers
+								</div><br/>
+
+								<div>
+									<a href="{{ course.courseInfo.course_url }}" class="btn btn-primary btn-md">GO TO CLASS</a>
+								</div><br/>
+
+								
+								<div>
+
+								</div>
+							</div>
+							
+							
+							
+						</aside>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 col-lg-4">
+						<div class="widget">
+							<h4>Browse online courses by MOOCs By </h4>
+							<ul class="link-list">
+								<li><a href="/providers">Providers</a></li>
+								<li><a href="#">Universities</a></li>
+								<li><a href="#">Institutions</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Languages</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-4 col-lg-4">
+						<div class="widget">
+							<h4>Quick Links</h4>
+							<ul class="link-list">
+								<li><a href="#">edX</a></li>
+								<li><a href="#">Cousera</a></li>
+								<li><a href="#">Udacity</a></li>
+								<li><a href="#">FutureLearn</a></li>
+								
+							</ul>
+						</div>
+
+					</div>
+					<div class="col-sm-4 col-lg-4">
+						<div class="widget">
+							<h4>More Quick Links...</h4>
+							<ul class="link-list">
+								<li><a href="#">Stanford</a></li>
+								<li><a href="#">Harvard</a></li>
+								<li><a href="#">MIT</a></li>
+								<li><a href="#">Google</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</footer>

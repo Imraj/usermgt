@@ -1,0 +1,40 @@
+<section>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="container marginbot50">
+						<h4 class="heading">All Courses</h4>
+
+						<span us-spinner ng-show="showSpinner"></span>
+						
+						<br/>
+						<div>
+							<ul class="recent">
+								<li class="col-md-4" dir-paginate="ac in writeReview.all_course | itemsPerPage: 50">
+									<div class="panel panel-default">
+									  
+									  <div class="panel-body">
+									  	<span><i>{{ac._provider.name}} : </i></span>
+									  	<span>
+									    	{{ac.university}}
+									    </span>
+									    <div>
+									    	<a href="/course/{{ac._id}}">{{ac.title}}</a>
+									    </div>
+
+									  </div>
+									  
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<dir-pagination-controls 
+						boundary-links="true" 
+						direction-links="true" >
+						</dir-pagination-controls>
+												
+
+					</div>
+				</div>
+			</div>
+		</section>

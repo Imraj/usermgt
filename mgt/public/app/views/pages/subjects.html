@@ -1,0 +1,17 @@
+<section class="col-md-offset-1" style="margin-right:5em;">
+
+	<div>
+		<span us-spinner spinner-on="showSpinner"></span>
+
+		<table class="table">
+			<tr><th><h3>Subjects</h3></th></tr>
+
+			<tr ng-repeat="subj in subjects.subjects">
+				
+				<td> <strong><a href="/subject/{{subj.name}}">{{ subj.name}}</a></strong> </td>				
+				
+			</tr>
+		</table>
+
+	</div>
+</section>

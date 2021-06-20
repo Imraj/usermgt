@@ -1,0 +1,320 @@
+ <link rel="stylesheet" href="assets/admin/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/admin/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrappe">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Reviews</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>{{admin.users.length}}</h3>
+
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{admin.users.length}}</h3>
+
+              <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <!--<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+       <section class="col-lg-5 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="box box-info">
+              <div class="box-header">
+                <h3 class="box-title">New Provider</h3>
+              </div>
+              <div class="box-body">
+                <form role="form" method="post" ng-submit="admin.addProvider(provider)">
+
+        					<hr class="colorgraph">
+        					<div class="alert alert-success" ng-show="admin.providerSuccessMsg">
+        						{{admin.providerSuccessMsg}}
+        					</div>
+        					<div class="alert alert-danger " ng-show="admin.providerErrorMsg">
+        						{{admin.providerErrorMsg}}
+        					</div>
+        					<div class="form-group">
+        						<input type="text" name="name" id="name" class="form-control" placeholder="Provider's Name" ng-model="admin.provider.name" tabindex="1">
+        					</div>
+
+        					<div class="form-group">
+        						<input type="text" name="url" id="url" class="form-control" placeholder="Provider's url" ng-model="admin.provider.url" tabindex="2">
+        					</div>
+
+        					<div class="form-group">
+        						<label>Description of provider</label>
+        						<textarea class="form-control" ng-model="admin.provider.description" rows="5">
+
+        						</textarea>
+        					</div>
+
+    							<div class="row">
+    								<div class="col-xs-12 col-md-6">
+    									<input type="submit" value="Add Provider" class="btn btn-primary btn-block" tabindex="7">
+    								</div>
+    							</div>
+  				      </form>
+              </div>
+          </div>
+          <!-- /.nav-tabs-custom -->
+
+          <div class="box box-info">
+              <div class="box-header">
+                <h3 class="box-title">New Subject</h3>
+              </div>
+              <div class="box-body">
+                <form role="form" method="post" ng-submit="admin.addSubject(subjectData)">
+
+                  <hr class="colorgraph">
+                  <div class="alert alert-success" ng-show="admin.subjectSuccessMsg">
+                    {{admin.subjectSuccessMsg}}
+                  </div>
+                  <div class="alert alert-danger " ng-show="admin.subjectErrorMsg">
+                    {{admin.subjectErrorMsg}}
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Subject Title" ng-model="admin.subjectData.name" tabindex="1">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Subject Level</label>
+                    <select ng-model="admin.subjectData.level" class="form-control">
+                        <option value="parent">0</option>
+                        <option ng-repeat="subj in admin.subjects" value="{{ subj.name }}">{{ subj.name }}</option>
+
+                    </select>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                      <input type="submit" value="Add Subject" class="btn btn-primary btn-block" tabindex="7">
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+
+          <!-- TO DO List -->
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+
+              	<h3 class="box-title">Fetch Courses</h3>
+
+                <div class="row">
+    	             <div class="col-xs-12 col-sm-12 col-md-6">
+    						    <button class="btn btn-primary btn-lg" ng-click="admin.fetchUdacityCourses()">Fetch Udacity</button>
+    				       </div>
+
+
+          				 <div class="col-xs-12 col-sm-12 col-md-6">
+          					<button class="btn btn-primary btn-lg" ng-click="admin.fetchEdXCourses()">Fetch EdX</button>
+          				 </div>
+				       </div>
+
+               <div class="row">
+                   <div class="col-xs-12 col-sm-12 col-md-6">
+                    <button class="btn btn-primary btn-lg" ng-click="admin.fetchFutureLearnCourses()">Fetch FutureLearn</button>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-12 col-md-6">
+                    <button class="btn btn-primary btn-lg" ng-click="admin.fetchStanfordCourses()">Fetch Stanford</button>
+                  </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-7 connectedSortable">
+        	<div class="box box-primary">
+	            <div class="box-header">
+
+                  <div class="row">
+                      <div class="col-lg-12">
+
+                        <ul class="nav nav-tabs">
+                          <li class="active"><a href="#one" data-toggle="tab"><i class="icon-briefcase"></i> Users</a></li>
+                          <li><a href="#two" data-toggle="tab">Providers</a></li>
+                          <li><a href="#three" data-toggle="tab">Institution</a></li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="one">
+                            <table class="table">
+                              <tr>
+                                <th>Name</th>
+                                <th>Account Status</th>
+                                <th>Role</th>
+                              </tr>
+                              <tr dir-paginate="val in admin.users | itemsPerPage: 15">
+                                <td>{{val.fullname}}</td>
+                                <td></td>
+                                <td>{{val.role}}</td>
+
+                              </tr>
+
+                            </table>
+                            <dir-pagination-controls
+                              boundary-links="true"
+                              direction-links="true" >
+                            </dir-pagination-controls>
+
+                          </div>
+                          <div class="tab-pane" id="two">
+                            <p>
+                              Tale dolor mea ex, te enim assum suscipit cum, vix aliquid omittantur in. Duo eu cibo dolorum menandri, nam sumo dicit admodum ei. Ne mazim commune honestatis cum, mentitum phaedrum sit et.
+                            </p>
+                          </div>
+                          <div class="tab-pane" id="three">
+                            <p>
+                              Cu cum commodo regione definiebas. Cum ea eros laboramus, audire deseruisse his at, munere aeterno ut quo. Et ius doming causae philosophia, vitae bonorum intellegat usu cu.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+	            </div>
+            </div>
+
+
+        	<div class="box box-solid bg-light-blue-gradient">
+	            <div class="box-header">
+	              <!-- tools box -->
+	              <div class="pull-right box-tools">
+	                <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip"
+	                        title="Date range">
+	                  <i class="fa fa-calendar"></i></button>
+	                <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse"
+	                        data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+	                  <i class="fa fa-minus"></i></button>
+	              </div>
+	              <!-- /. tools -->
+
+	              <i class="fa fa-map-marker"></i>
+
+	              <h3 class="box-title">
+	                Visitors
+	              </h3>
+	            </div>
+	            <div class="box-body">
+	              <div id="world-map" style="height: 250px; width: 100%;"></div>
+	            </div>
+	            <!-- /.box-body-->
+	            <div class="box-footer no-border">
+	              <div class="row">
+	                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+	                  <div id="sparkline-1"></div>
+	                  <div class="knob-label">Visitors</div>
+	                </div>
+	                <!-- ./col -->
+	                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+	                  <div id="sparkline-2"></div>
+	                  <div class="knob-label">Online</div>
+	                </div>
+	                <!-- ./col -->
+	                <div class="col-xs-4 text-center">
+	                  <div id="sparkline-3"></div>
+	                  <div class="knob-label">Exists</div>
+	                </div>
+	                <!-- ./col -->
+	              </div>
+	              <!-- /.row -->
+	            </div>
+          	</div>
+
+
+          <!-- Map box -->
+          <div class="box box-solid bg-light-blue-gradient">
+
+          </div>
+          <!-- /.box -->
+
+        </section>
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+  </div>

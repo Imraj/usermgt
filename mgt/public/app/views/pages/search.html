@@ -1,0 +1,72 @@
+<section>
+
+	
+
+</section>
+
+
+<style>
+	.flex, .flex > div[class*='col-'] {  
+	    display: -webkit-box;
+	    display: -moz-box;
+	    display: -ms-flexbox;
+	    display: -webkit-flex;
+	    display: flex;
+	    flex:1 0 auto;
+	}
+
+	#desc{
+		height:5em;
+	}
+</style>
+
+<section>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="container marginbot50">
+						<h4 class="heading">Search Result</h4>
+
+						<span us-spinner ng-show="showSpinner"></span>
+						
+						<br/>
+						<div>
+							<table>
+								<tr>
+									<td>
+									<div class="row recent">
+										<div class="col-md-6 col-sm-12 col-xs-12"  dir-paginate="ac in search.results | itemsPerPage: 50">
+											<div class="panel panel-default">
+											  
+											  <div class="panel-body">
+											  	<span><i>{{ac._provider.name}}</i></span>
+											  	<span>
+											    	: {{ac.university}}
+											    </span>
+											    <div>
+											    	<a href="/course/{{ac._id}}">{{ac.title}}</a>
+											    </div>
+											    <div id="desc">
+											    	{{ac.description | limitTo : 200}} {{ac.description.length > 200 ? "..." : ""}}
+											    </div>
+
+											  </div>
+											  
+											</div>
+										</div>
+										
+									</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<dir-pagination-controls 
+						boundary-links="true" 
+						direction-links="true" >
+						</dir-pagination-controls>
+												
+
+					</div>
+				</div>
+			</div>
+		</section>

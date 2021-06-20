@@ -1,0 +1,82 @@
+<script>
+	function printProfile(){
+		window.print();
+	}
+</script>
+<style>
+	@media print
+	{
+		.noprint {display:none;}
+		#resume { border: none }
+	}
+</style>
+
+<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<h2>User's Profile </h2>
+						<div>
+							<a class="btn btn-primary noprint" onclick="printProfile()">Print Profile </a>
+						</div>
+						<hr class="colorgraph">
+
+						<div class="row show-hide-message" ng-show="profile.successMsg">
+								<div class="alert alert-success"> {{ profile.successMsg }}</div>
+						</div>
+						<div class="row show-hide-message" ng-show="profile.errorMsg">
+								<div class="alert alert-danger">{{ profile.errorMsg }}</div>
+						</div>
+
+						<div class="form-group">
+								<input type="text" name="name" class="form-control" id="resume" placeholder="Your Name" readonly="readonly"  value="{{profile.fullname}}"/>
+								<div class="validation"></div>
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" name="email" id="resume" placeholder="Your Email" readonly="" value="{{profile.email}}" />
+								<div class="validation"></div>
+						</div>
+						<form ng-submit="profile.updateProfile(profile.profileData)" method="post">
+							<div class="form-group">
+								<label>Interest</label>
+								<textarea  id="resume" class="form-control" rows="3" data-rule="required"  placeholder="Please write your interests" ng-model="profile.profileData.interest">
+									
+								</textarea>
+								
+							</div>
+
+							<div class="form-group">
+								<label>Hobbies</label>
+								<textarea   id="resume" class="form-control" rows="3" data-rule="required" placeholder="Please write your hobbies" ng-model="profile.profileData.hobby"></textarea>
+								
+							</div>
+
+							<div class="form-group">
+								<label>Short Bio</label>
+								<textarea id="resume" class="form-control" rows="3" data-rule="required" placeholder="Please write a short bio" ng-model="profile.profileData.bio"></textarea>
+								
+							</div>
+
+							<div class="text-center noprint" >
+								<input type="submit" class="btn btn-theme btn-block btn-md" value="Update Profile" />
+							</div>
+						</form>
+
+						<hr class="colorgraph">
+						<h3>Courses</h3>
+						
+						<table class="table">
+							<tr>
+								<th>Course</th>
+								<th>Completion level</th>
+							</tr>
+							<tr ng-repeat="courses in userCourses">
+								<td>{{ courses._courseId.text }}</td>
+								<td>{{ courses._courseId.completion_level}}</td>
+							</tr>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</section>
