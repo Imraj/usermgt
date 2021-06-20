@@ -16,9 +16,10 @@ const Profile = () => {
 
         }
 
-        updatePassword(){
-
-        }
+        const onChangePassword = (e) => {
+		const password = e.target.value;
+		setPassword(password);
+	};
 
 	return(
 		<section id="content">
