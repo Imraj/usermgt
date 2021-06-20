@@ -24,8 +24,8 @@ function App() {
 
   useEffect(() => {
     if (currentUser) {
-      setShowRegularBoard(currentUser.roles.includes("ROLE_REGULAR"));
-      setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+      setShowRegularBoard(currentUser.role.includes("REGULAR"));
+      setShowAdminBoard(currentUser.role.includes("ADMIN"));
     }
   }, [currentUser]);
 
