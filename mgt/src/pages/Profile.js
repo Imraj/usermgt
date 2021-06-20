@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 const Profile = () => {
 
 	const { user: currentUser } = useSelector((state) => state.auth);
+        const [password, setPassword] = useState("");
 
 	if (!currentUser) {
 		return <Redirect to="/login" />;
