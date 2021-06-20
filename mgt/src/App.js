@@ -4,13 +4,11 @@ import { Router, Switch, Route, Link } from "react-router-dom";
 
 import './App.css';
 
-//import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
 import { connect } from 'react-redux'
 
-import {Login} from "./pages/Login"
-import {Users} from "./pages/Users"
-import {Profile} from "./pages/Profile"
+import Login from "./pages/Login"
+import Users from "./pages/Users"
+import Profile from "./pages/Profile"
 
 import { logout } from "./actions/auth";
 import { updatePassword } from "./actions/index";
