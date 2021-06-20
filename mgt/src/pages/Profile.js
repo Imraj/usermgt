@@ -11,6 +11,14 @@ const Profile = () => {
 		return <Redirect to="/login" />;
 	}
 
+        handleSubmit(){
+
+        }
+
+        updatePassword(){
+
+        }
+
 	return(
 		<section id="content">
 			<div class="container">
@@ -45,15 +53,3 @@ const Profile = () => {
 };
 
 export default Profile
-
-const mapStateToProps = state => {
-    return {users: state.users}
-}
-
-const mapDispatchToProps = dispatch => {
-	return {
-		dispatch
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);
