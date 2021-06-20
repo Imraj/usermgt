@@ -12,10 +12,21 @@ const Profile = () => {
 		return <Redirect to="/login" />;
 	}
 
-        handleSubmit(){
-
-        }
-
+        const handleSubmit = (e) => {
+		e.preventDefault();
+	
+		setLoading(true);
+		
+		dispatch(updatePwd(password))
+		.then(() => {
+			props.history.push("/profile");
+			window.location.reload();
+		})
+		.catch(() => {
+			setLoading(false);
+		});
+		
+	};
         const onChangePassword = (e) => {
 		const password = e.target.value;
 		setPassword(password);
